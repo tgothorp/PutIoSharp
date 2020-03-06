@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PutIo.Sharp", "PutIo.Sharp\PutIo.Sharp.csproj", "{A2060DA5-39A6-4B50-948A-B0BB793E5D25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PutIo.Sharp.Tests", "PutIo.Sharp.Tests\PutIo.Sharp.Tests.csproj", "{517578FD-E88F-4EEE-811D-6D083E9758D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2060DA5-39A6-4B50-948A-B0BB793E5D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2060DA5-39A6-4B50-948A-B0BB793E5D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2060DA5-39A6-4B50-948A-B0BB793E5D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2060DA5-39A6-4B50-948A-B0BB793E5D25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{517578FD-E88F-4EEE-811D-6D083E9758D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{517578FD-E88F-4EEE-811D-6D083E9758D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{517578FD-E88F-4EEE-811D-6D083E9758D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{517578FD-E88F-4EEE-811D-6D083E9758D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
