@@ -1,0 +1,54 @@
+﻿{
+  "info": {
+    "account_active": true,
+    "avatar_url": "https://www.gravatar.com/avatar/00000000000000000000000000000000.jpg?s=50",
+    "can_create_sub_account": false,
+    "can_invite_friend": true,
+    "days_until_files_deletion": 0,
+    "disk": {
+      "avail": 16794461277,
+      "size": 53687091200,
+      "used": 36892629923
+    },
+    "family_owner": "ExampleUsername",
+    "files_will_be_deleted_at": null,
+    "has_voucher": false,
+    "is_invited_friend": false,
+    "is_sub_account": false,
+    "mail": "example@email.com",
+    "oauth_token_id": 1234567,
+    "plan_expiration_date": "2020-03-13T01:53:27",
+    "private_download_host_ip": null,
+    "settings": {
+      "beta_user": true,
+      "callback_url": null,
+      "dark_theme": false,
+      "default_download_folder": 0,
+      "fluid_layout": false,
+      "history_enabled": true,
+      "is_invisible": true,
+      "locale": null,
+      "login_mails_enabled": true,
+      "next_episode": true,
+      "pushover_token": null,
+      "sort_by": "DATE_DESC",
+      "start_from": false,
+      "subtitle_languages": [
+        "eng"
+      ],
+      "theater_mode": true,
+      "transfer_sort_by": null,
+      "trash_enabled": true,
+      "tunnel_route_name": "London",
+      "use_private_download_ip": false,
+      "video_player": null
+    },
+    "simultaneous_download_limit": 15,
+    "subtitle_languages": [
+      "eng"
+    ],
+    "user_id": 123456,
+    "username": "ExampleUsername"
+  },
+  "status": "OK"
+}

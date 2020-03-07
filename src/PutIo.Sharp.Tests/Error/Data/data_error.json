@@ -1,0 +1,9 @@
+﻿{
+  "error_id": null,
+  "error_message": "The browser (or proxy) sent a request that this server could not understand.",
+  "error_type": "BadRequest",
+  "error_uri": "http://api.put.io/v2/docs",
+  "extra": {},
+  "status": "ERROR",
+  "status_code": 400
+}

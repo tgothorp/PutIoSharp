@@ -1,0 +1,27 @@
+﻿{
+  "settings": {
+    "beta_user": true,
+    "callback_url": null,
+    "dark_theme": true,
+    "default_download_folder": 0,
+    "fluid_layout": false,
+    "history_enabled": true,
+    "is_invisible": true,
+    "locale": null,
+    "login_mails_enabled": true,
+    "next_episode": true,
+    "pushover_token": null,
+    "sort_by": "DATE_DESC",
+    "start_from": false,
+    "subtitle_languages": [
+      "eng"
+    ],
+    "theater_mode": true,
+    "transfer_sort_by": null,
+    "trash_enabled": true,
+    "tunnel_route_name": "London",
+    "use_private_download_ip": false,
+    "video_player": null
+  },
+  "status": "OK"
+}
