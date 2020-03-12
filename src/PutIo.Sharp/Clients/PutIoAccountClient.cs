@@ -18,7 +18,7 @@ namespace PutIo.Sharp.Clients
         /// </summary>
         public async Task<GetAccountInfoResponse> GetAccountInfo()
         {
-            return await _apiClient.ExecuteGetAsync<GetAccountInfoResponse>("account/info");
+            return await _apiClient.ExecuteGetWithResponseAsync<GetAccountInfoResponse>("account/info");
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace PutIo.Sharp.Clients
         /// </summary>
         public async Task<GetAccountSettingsResponse> GetAccountSettings()
         {
-            return await _apiClient.ExecuteGetAsync<GetAccountSettingsResponse>("account/settings");
+            return await _apiClient.ExecuteGetWithResponseAsync<GetAccountSettingsResponse>("account/settings");
         }
         
         /// <summary>

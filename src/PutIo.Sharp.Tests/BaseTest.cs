@@ -24,7 +24,8 @@ namespace PutIo.Sharp.Tests
             PutioConfiguration = new PutioConfiguration
             {
                  Token = "TEST_TOKEN",
-                 HttpClient = new HttpClient(_handlerMock.Object)
+                 ApiHttpClient = new HttpClient(_handlerMock.Object),
+                 UploadHttpClient = new HttpClient(_handlerMock.Object)
             };
             
             PutioApiClient = new PutioApiClient(PutioConfiguration);

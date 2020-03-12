@@ -12,45 +12,43 @@ namespace PutIo.Sharp.Clients
 {
     public class PutioApiClient
     {
-        private readonly HttpClient _client;
+        private readonly HttpClient _apiClient;
+        private readonly HttpClient _uploadClient;
 
         public PutIoAccountClient Account;
         public PutIoFileClient Files;
 
         public PutioApiClient(PutioConfiguration putioConfiguration)
         {
-            _client = putioConfiguration.HttpClient ?? new HttpClient();
-            _client.BaseAddress = new Uri(putioConfiguration.BaseUrl);
-            _client.DefaultRequestHeaders.Add("authorization", $"bearer {putioConfiguration.Token}");
+            _apiClient = putioConfiguration.ApiHttpClient ?? new HttpClient();
+            _apiClient.BaseAddress = new Uri(putioConfiguration.BaseUrl);
+            _apiClient.DefaultRequestHeaders.Add("authorization", $"bearer {putioConfiguration.Token}");
+
+            _uploadClient = putioConfiguration.UploadHttpClient ?? new HttpClient();
+            _apiClient.BaseAddress = new Uri(putioConfiguration.BaseUploadUrl);
+            _apiClient.DefaultRequestHeaders.Add("authorization", $"bearer {putioConfiguration.Token}");
             
             Account = new PutIoAccountClient(this);
             Files = new PutIoFileClient(this);
         }
 
-        internal async Task ExecutePostAsync(string url, PutIoPostRequest requestObject)
+        internal async Task ExecutePostAsync(string url, PutIoPostRequest requestObject = null)
         {
-            var body = new StringContent(requestObject.Serialize(), Encoding.UTF8, "application/json");
-            var response = await _client.PostAsync(url, body);
-            if (!response.IsSuccessStatusCode)
-            {
-                await HandleApiError(response);
-            }
-        }
-        
-        internal async Task ExecutePostAsync(string url)
-        {
-            var body = new StringContent("", Encoding.UTF8, "application/json");
-            var response = await _client.PostAsync(url, body);
+            var body = requestObject is null 
+                ? new StringContent("", Encoding.UTF8, "application/json") 
+                : new StringContent(requestObject.Serialize(), Encoding.UTF8, "application/json");
+
+            var response = await _apiClient.PostAsync(url, body);
             if (!response.IsSuccessStatusCode)
             {
                 await HandleApiError(response);
             }
         }
 
-        internal async Task<T> ExecutePostAsync<T>(string url, PutIoPostRequest requestObject)
+        internal async Task<T> ExecutePostWithResponseAsync<T>(string url, PutIoPostRequest requestObject)
         {
             var body = new StringContent(requestObject.Serialize(), Encoding.UTF8, "application/json");
-            var response = await _client.PostAsync(url, body);
+            var response = await _apiClient.PostAsync(url, body);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -61,12 +59,12 @@ namespace PutIo.Sharp.Clients
             return JsonSerializer.Deserialize<T>(rawResponse);
         }
 
-        internal async Task<T> ExecuteGetAsync<T>(string url, PutIoGetRequest requestObject = null)
+        internal async Task<T> ExecuteGetWithResponseAsync<T>(string url, PutIoGetRequest requestObject = null)
         {
             if (requestObject != null)
                 url = $"{url}?{requestObject.BuildQueryString()}";
 
-            var response = await _client.GetAsync(url);
+            var response = await _apiClient.GetAsync(url);
             if (!response.IsSuccessStatusCode)
             {
                 await HandleApiError(response);
@@ -74,6 +72,21 @@ namespace PutIo.Sharp.Clients
 
             var rawResponse = await response.Content.ReadAsStringAsync();
             return JsonSerializer.Deserialize<T>(rawResponse);
+        }
+
+        internal async Task UploadFileAsync(UploadFileRequest request)
+        {
+            using (var body = new MultipartContent())
+            {
+                body.Add(new StringContent(request.Serialize(), Encoding.UTF8, "application/json"));
+                body.Add(new StreamContent(request.FileStream));
+
+                var response = await _uploadClient.PutAsync("files/upload", body);
+                if (!response.IsSuccessStatusCode)
+                {
+                    await HandleApiError(response);
+                }
+            }
         }
         
         private async Task HandleApiError(HttpResponseMessage responseMessage)

@@ -19,7 +19,7 @@ namespace PutIo.Sharp.Clients
         /// </summary>
         public async Task<ListFilesResponse> ListFiles(ListFilesRequest request)
         {
-            return await _apiClient.ExecuteGetAsync<ListFilesResponse>($"files/list", request);
+            return await _apiClient.ExecuteGetWithResponseAsync<ListFilesResponse>($"files/list", request);
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace PutIo.Sharp.Clients
         /// </summary>
         public async Task<ListFilesContinueResponse> ListFilesContinue(ListFilesContinueRequest request)
         {
-            return await _apiClient.ExecutePostAsync<ListFilesContinueResponse>($"files/list/continue", request);
+            return await _apiClient.ExecutePostWithResponseAsync<ListFilesContinueResponse>($"files/list/continue", request);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace PutIo.Sharp.Clients
         /// </summary>
         public async Task<SearchFilesResponse> SearchFiles(SearchFilesRequest request)
         {
-            return await _apiClient.ExecuteGetAsync<SearchFilesResponse>($"files/search", request);
+            return await _apiClient.ExecuteGetWithResponseAsync<SearchFilesResponse>($"files/search", request);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace PutIo.Sharp.Clients
         /// </summary>
         public async Task<SearchFilesContinueResponse> SearchFilesContinue(SearchFilesContinueRequest request)
         {
-            return await _apiClient.ExecutePostAsync<SearchFilesContinueResponse>("files/search/continue", request);
+            return await _apiClient.ExecutePostWithResponseAsync<SearchFilesContinueResponse>("files/search/continue", request);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace PutIo.Sharp.Clients
         /// </summary>
         public async Task<CreateFolderResponse> CreateFolder(CreateFolderRequest request)
         {
-            return await _apiClient.ExecutePostAsync<CreateFolderResponse>("files/create-folder", request);
+            return await _apiClient.ExecutePostWithResponseAsync<CreateFolderResponse>("files/create-folder", request);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace PutIo.Sharp.Clients
         /// </summary>
         public async Task<Mp4ConversionStatusResponse> Mp4ConversionStatus(Mp4ConversionStatusRequest request)
         {
-            return await _apiClient.ExecuteGetAsync<Mp4ConversionStatusResponse>($"files/{request.FileId}/mp4");
+            return await _apiClient.ExecuteGetWithResponseAsync<Mp4ConversionStatusResponse>($"files/{request.FileId}/mp4");
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace PutIo.Sharp.Clients
         /// </summary>
         public async Task<SubtitlesResponse> ListSubtitles(SubtitlesRequest request)
         {
-            return await _apiClient.ExecuteGetAsync<SubtitlesResponse>($"files/{request.FileId}/subtitles");
+            return await _apiClient.ExecuteGetWithResponseAsync<SubtitlesResponse>($"files/{request.FileId}/subtitles");
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace PutIo.Sharp.Clients
         /// </summary>
         public async Task<string> DownloadSubtitles(DownloadSubtitlesRequest request)
         {
-            return await _apiClient.ExecuteGetAsync<string>($"files/{request.FileId}/subtitles/{request.Key}", request);
+            return await _apiClient.ExecuteGetWithResponseAsync<string>($"files/{request.FileId}/subtitles/{request.Key}", request);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace PutIo.Sharp.Clients
         /// </summary>
         public async Task<string> DownloadHlsPlaylist(DownloadHlsPlaylistRequest request)
         {
-            return await _apiClient.ExecuteGetAsync<string>($"files/{request.FileId}/hls/media.m3u8", request);
+            return await _apiClient.ExecuteGetWithResponseAsync<string>($"files/{request.FileId}/hls/media.m3u8", request);
         }
 
         /// <summary>
@@ -121,9 +121,9 @@ namespace PutIo.Sharp.Clients
         /// <summary>
         /// Upload a files
         /// </summary>
-        public async Task UploadFile()
+        public async Task UploadFile(UploadFileRequest request)
         {
-            throw new NotImplementedException();
+            await _apiClient.UploadFileAsync(request);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace PutIo.Sharp.Clients
         /// </summary>
         public async Task<ListExtractionsResponse> ListExtractions()
         {
-            return await _apiClient.ExecuteGetAsync<ListExtractionsResponse>("files/extract");
+            return await _apiClient.ExecuteGetWithResponseAsync<ListExtractionsResponse>("files/extract");
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace PutIo.Sharp.Clients
         /// </summary>
         public async Task<ExtractionsResponse> Extract(ExtractionRequest request)
         {
-            return await _apiClient.ExecutePostAsync<ExtractionsResponse>("files/extract", request);
+            return await _apiClient.ExecutePostWithResponseAsync<ExtractionsResponse>("files/extract", request);
         }
 
         /// <summary>
