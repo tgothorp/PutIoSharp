@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Moq;
 using Moq.Protected;
+using PutIo.Sharp.Clients;
 using PutIo.Sharp.Configuration;
 
 namespace PutIo.Sharp.Tests

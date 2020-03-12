@@ -15,7 +15,7 @@ namespace PutIo.Sharp.Tests.Error
         {
             OverrideApiResponse(HttpStatusCode.BadRequest, File.ReadAllText($"{Path.GetDirectoryName(System.Reflection.Assembly.GetAssembly(typeof(ErrorTests)).Location)}/Error/Data/data_error.json"));
             
-            var exception = await Should.ThrowAsync<PutioException>(async () => await PutioApiClient.UpdateAccountSettings(new UpdateAccountSettingsRequest()));
+            var exception = await Should.ThrowAsync<PutioException>(async () => await PutioApiClient.Account.UpdateAccountSettings(new UpdateAccountSettingsRequest()));
             exception.ShouldNotBeNull();
             exception.Error.ShouldNotBeNull();
             exception.Error.Id.ShouldBeNull();
@@ -31,7 +31,7 @@ namespace PutIo.Sharp.Tests.Error
         {
             OverrideApiResponse(HttpStatusCode.BadRequest, File.ReadAllText($"{Path.GetDirectoryName(System.Reflection.Assembly.GetAssembly(typeof(ErrorTests)).Location)}/Error/Data/data_bad_error.json"));
             
-            var exception = await Should.ThrowAsync<PutioException>(async () => await PutioApiClient.UpdateAccountSettings(new UpdateAccountSettingsRequest()));
+            var exception = await Should.ThrowAsync<PutioException>(async () => await PutioApiClient.Account.UpdateAccountSettings(new UpdateAccountSettingsRequest()));
             exception.ShouldNotBeNull();
             exception.InnerException.ShouldNotBeNull();
             exception.InnerException.GetType().ShouldBe(typeof(JsonException));

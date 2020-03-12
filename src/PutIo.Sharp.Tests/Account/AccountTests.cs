@@ -16,10 +16,12 @@ namespace PutIo.Sharp.Tests.Account
         {
             OverrideApiResponse(HttpStatusCode.OK, File.ReadAllText($"{Path.GetDirectoryName(System.Reflection.Assembly.GetAssembly(typeof(ErrorTests)).Location)}/Account/Data/get_account_info.json"));
 
-            var accountInfo = await PutioApiClient.GetAccountInfo();
+            var accountInfo = await PutioApiClient.Account.GetAccountInfo();
             accountInfo.ShouldNotBeNull();
-            accountInfo.Disk.ShouldNotBeNull();
-            accountInfo.AccountSettings.ShouldNotBeNull();
+            accountInfo.Status.ShouldBe("OK");
+            accountInfo.AccountInfo.ShouldNotBeNull();
+            accountInfo.AccountInfo.Disk.ShouldNotBeNull();
+            accountInfo.AccountInfo.AccountSettings.ShouldNotBeNull();
         }
 
         [Fact]
@@ -27,8 +29,10 @@ namespace PutIo.Sharp.Tests.Account
         {
             OverrideApiResponse(HttpStatusCode.OK, File.ReadAllText($"{Path.GetDirectoryName(System.Reflection.Assembly.GetAssembly(typeof(ErrorTests)).Location)}/Account/Data/get_account_settings.json"));
 
-            var accountSettings = await PutioApiClient.GetAccountSettings();
+            var accountSettings = await PutioApiClient.Account.GetAccountSettings();
             accountSettings.ShouldNotBeNull();
+            accountSettings.Status.ShouldBe("OK");
+            accountSettings.Settings.ShouldNotBeNull();
         }
 
         [Fact]
@@ -43,7 +47,7 @@ namespace PutIo.Sharp.Tests.Account
             };
 
             OverrideApiResponse(HttpStatusCode.OK, "{}");
-            await PutioApiClient.UpdateAccountSettings(request);
+            await PutioApiClient.Account.UpdateAccountSettings(request);
         }
     }
 }

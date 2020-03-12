@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using PutIo.Sharp.Models.Shared;
 
 namespace PutIo.Sharp.Models.Account.Requests
 {
-    public class UpdateAccountSettingsRequest
+    public class UpdateAccountSettingsRequest : PutIoPostRequest
     {
         /// <summary>
         /// The id of the folder that should be the default download folder (0 is the root directory).
@@ -35,6 +36,11 @@ namespace PutIo.Sharp.Models.Account.Requests
         {
             DefaultSubtitleLanguage,
             SecondarySubtitleLanguage
-        }; 
+        };
+
+        internal override string Serialize()
+        {
+            return JsonSerializer.Serialize(this);
+        }
     }
 }

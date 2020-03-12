@@ -2,7 +2,7 @@
 
 namespace PutIo.Sharp.Models.Account.Response
 {
-    internal class GetAccountSettingsResponse
+    public class GetAccountSettingsResponse
     {
         [JsonPropertyName("settings")]
         public AccountSettings Settings { get; set; }

@@ -4,58 +4,42 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using PutIo.Sharp.Configuration;
-using PutIo.Sharp.Models.Account;
-using PutIo.Sharp.Models.Account.Requests;
-using PutIo.Sharp.Models.Account.Response;
 using PutIo.Sharp.Models.Exceptions;
+using PutIo.Sharp.Models.Files.Requests;
+using PutIo.Sharp.Models.Files.Response;
 
-namespace PutIo.Sharp
+namespace PutIo.Sharp.Clients
 {
     public class PutioApiClient
     {
         private readonly HttpClient _client;
+
+        public PutIoAccountClient Account;
+        public PutIoFileClient Files;
 
         public PutioApiClient(PutioConfiguration putioConfiguration)
         {
             _client = putioConfiguration.HttpClient ?? new HttpClient();
             _client.BaseAddress = new Uri(putioConfiguration.BaseUrl);
             _client.DefaultRequestHeaders.Add("authorization", $"bearer {putioConfiguration.Token}");
+            
+            Account = new PutIoAccountClient(this);
+            Files = new PutIoFileClient(this);
         }
 
-        /// <summary>
-        /// Get account info
-        /// </summary>
-        /// <returns>Account information for the user, see <see cref="AccountInfo"/> for details</returns>
-        public async Task<AccountInfo> GetAccountInfo()
+        internal async Task ExecutePostAsync(string url, PutIoPostRequest requestObject)
         {
-            var accountInfoResponse = await ExecuteGetAsync<GetAccountInfoResponse>("account/info");
-            return accountInfoResponse.AccountInfo;
-        }
-
-        /// <summary>
-        /// Get account settings (these are included when calling <see cref="GetAccountInfo"/>)
-        /// </summary>
-        /// <returns>Account setting for the user, see <see cref="AccountSettings"/></returns>
-        public async Task<AccountSettings> GetAccountSettings()
-        {
-            var accountSettingsResponse = await ExecuteGetAsync<GetAccountSettingsResponse>("account/settings");
-            return accountSettingsResponse.Settings;
+            var body = new StringContent(requestObject.Serialize(), Encoding.UTF8, "application/json");
+            var response = await _client.PostAsync(url, body);
+            if (!response.IsSuccessStatusCode)
+            {
+                await HandleApiError(response);
+            }
         }
         
-        /// <summary>
-        /// Update account settings
-        /// </summary>
-        /// <param name="request">See <see cref="UpdateAccountSettings"/> for individual settings</param>
-        /// <returns>Task</returns>
-        public async Task UpdateAccountSettings(UpdateAccountSettingsRequest request)
+        internal async Task ExecutePostAsync(string url)
         {
-            await ExecutePostAsync("account/settings", request);
-        }
-
-        private async Task ExecutePostAsync(string url, object requestObject)
-        {
-            var requestJson = JsonSerializer.Serialize(requestObject);
-            var body = new StringContent(requestJson, Encoding.UTF8, "application/json");
+            var body = new StringContent("", Encoding.UTF8, "application/json");
             var response = await _client.PostAsync(url, body);
             if (!response.IsSuccessStatusCode)
             {
@@ -63,9 +47,9 @@ namespace PutIo.Sharp
             }
         }
 
-        private async Task<T> ExecutePostAsync<T>(string url, object requestObject)
+        internal async Task<T> ExecutePostAsync<T>(string url, PutIoPostRequest requestObject)
         {
-            var body = new StringContent(JsonSerializer.Serialize(requestObject), Encoding.UTF8, "application/json");
+            var body = new StringContent(requestObject.Serialize(), Encoding.UTF8, "application/json");
             var response = await _client.PostAsync(url, body);
 
             if (!response.IsSuccessStatusCode)
@@ -77,8 +61,11 @@ namespace PutIo.Sharp
             return JsonSerializer.Deserialize<T>(rawResponse);
         }
 
-        private async Task<T> ExecuteGetAsync<T>(string url)
+        internal async Task<T> ExecuteGetAsync<T>(string url, PutIoGetRequest requestObject = null)
         {
+            if (requestObject != null)
+                url = $"{url}?{requestObject.BuildQueryString()}";
+
             var response = await _client.GetAsync(url);
             if (!response.IsSuccessStatusCode)
             {
