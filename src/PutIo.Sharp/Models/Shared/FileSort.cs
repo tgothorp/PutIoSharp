@@ -1,7 +1,7 @@
 ﻿using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-namespace PutIo.Sharp.Models.Files
+namespace PutIo.Sharp.Models.Shared
 {
     [JsonConverter(typeof(JsonStringEnumMemberConverter))]
     public enum FileSort

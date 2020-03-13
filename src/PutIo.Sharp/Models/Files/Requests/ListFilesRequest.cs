@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
+using PutIo.Sharp.Models.Shared;
 
 namespace PutIo.Sharp.Models.Files.Requests
 {

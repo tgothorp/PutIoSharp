@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using PutIo.Sharp.Models.Files;
 using PutIo.Sharp.Models.Shared;
 
 namespace PutIo.Sharp.Models.Account
@@ -40,7 +41,7 @@ namespace PutIo.Sharp.Models.Account
         public string PushoverToken { get; set; }
         
         [JsonPropertyName("sort_by")]
-        public string SortBy { get; set; }
+        public FileSort SortBy { get; set; }
         
         [JsonPropertyName("start_from")]
         public bool StartFrom { get; set; }

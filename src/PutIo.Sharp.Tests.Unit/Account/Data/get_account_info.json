@@ -16,7 +16,7 @@
     "is_invited_friend": false,
     "is_sub_account": false,
     "mail": "example@email.com",
-    "oauth_token_id": 1234567,
+      "oauth_token_id": 1234567,
     "plan_expiration_date": "2020-03-13T01:53:27",
     "private_download_host_ip": null,
     "settings": {

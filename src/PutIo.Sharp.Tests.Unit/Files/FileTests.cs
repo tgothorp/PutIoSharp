@@ -4,6 +4,7 @@ using System.Net;
 using System.Threading.Tasks;
 using PutIo.Sharp.Models.Files;
 using PutIo.Sharp.Models.Files.Requests;
+using PutIo.Sharp.Models.Shared;
 using Shouldly;
 using Xunit;
 
