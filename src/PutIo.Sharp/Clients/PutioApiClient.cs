@@ -16,6 +16,7 @@ namespace PutIo.Sharp.Clients
 
         public PutIoAccountClient Account;
         public PutIoFileClient Files;
+        public PutIoTransferClient Transfers;
 
         public PutioApiClient(PutioConfiguration putioConfiguration)
         {
@@ -29,6 +30,7 @@ namespace PutIo.Sharp.Clients
             
             Account = new PutIoAccountClient(this);
             Files = new PutIoFileClient(this);
+            Transfers = new PutIoTransferClient(this);
         }
 
         internal async Task ExecutePostAsync(string url, PutIoPostRequest requestObject = null)
