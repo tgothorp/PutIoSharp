@@ -37,6 +37,30 @@
       <Content Include="Account\Data\get_account_settings.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="Files\Data\get_list_files.json" />
+      <Content Include="Files\Data\get_list_files.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="Files\Data\get_search_files.json" />
+      <Content Include="Files\Data\get_search_files.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="Files\Data\post_create_folder.json" />
+      <Content Include="Files\Data\post_create_folder.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="Files\Data\get_mp4_conversion_status.json" />
+      <Content Include="Files\Data\get_mp4_conversion_status.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="Files\Data\get_subtitles.json" />
+      <Content Include="Files\Data\get_list_subtitles.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="Files\Data\get_list_extractions.json" />
+      <Content Include="Files\Data\get_list_extractions.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

@@ -9,7 +9,7 @@ namespace PutIo.Sharp.Models.Files
         public string Key { get; set; }
         
         [JsonPropertyName("language")]
-        public SubtitleLanguage Language { get; set; }
+        public string Language { get; set; }
         
         [JsonPropertyName("name")]
         public string Name { get; set; }

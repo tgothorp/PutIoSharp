@@ -40,6 +40,9 @@ namespace PutIo.Sharp.Models.Files
         
         [JsonPropertyName("is_shared")]
         public bool IsShared { get; set; }
+
+        [JsonPropertyName("need_convert")]
+        public bool ConversionNeeded { get; set; }
         
         [JsonPropertyName("name")]
         public string Name { get; set; }
@@ -52,9 +55,15 @@ namespace PutIo.Sharp.Models.Files
         
         [JsonPropertyName("screenshot")]
         public string Screenshot { get; set; }
+
+        [JsonPropertyName("sender_name")]
+        public string SenderName { get; set; }
         
         [JsonPropertyName("size")]
         public long Size { get; set; }
+
+        [JsonPropertyName("mp4_size")]
+        public long? Mp4Size { get; set; }
         
         [JsonPropertyName("sort_by")]
         public FileSort SortBy { get; set; }

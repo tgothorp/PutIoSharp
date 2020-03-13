@@ -8,7 +8,7 @@ using Moq.Protected;
 using PutIo.Sharp.Clients;
 using PutIo.Sharp.Configuration;
 
-namespace PutIo.Sharp.Tests
+namespace PutIo.Sharp.Tests.Unit
 {
     public class BaseTest : IDisposable
     {

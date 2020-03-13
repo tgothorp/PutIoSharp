@@ -7,7 +7,7 @@ namespace PutIo.Sharp.Models.Files
         [JsonPropertyName("status")]
         public string Status { get; set; } // todo: Convert this to an enum when I learn what the possible options are
 
-        [JsonPropertyName("percentage_done")]
+        [JsonPropertyName("percent_done")]
         public decimal PercentageComplete { get; set; }
 
         [JsonPropertyName("size")]

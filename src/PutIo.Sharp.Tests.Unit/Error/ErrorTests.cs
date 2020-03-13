@@ -6,7 +6,7 @@ using PutIo.Sharp.Models.Account.Requests;
 using Shouldly;
 using Xunit;
 
-namespace PutIo.Sharp.Tests.Error
+namespace PutIo.Sharp.Tests.Unit.Error
 {
     public class ErrorTests : BaseTest
     {

@@ -3,11 +3,11 @@ using System.Net;
 using System.Threading.Tasks;
 using PutIo.Sharp.Models.Account.Requests;
 using PutIo.Sharp.Models.Shared;
-using PutIo.Sharp.Tests.Error;
+using PutIo.Sharp.Tests.Unit.Error;
 using Shouldly;
 using Xunit;
 
-namespace PutIo.Sharp.Tests.Account
+namespace PutIo.Sharp.Tests.Unit.Account
 {
     public class AccountTests : BaseTest
     {

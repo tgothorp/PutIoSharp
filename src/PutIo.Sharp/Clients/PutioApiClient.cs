@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using PutIo.Sharp.Configuration;
 using PutIo.Sharp.Models.Exceptions;
 using PutIo.Sharp.Models.Files.Requests;
-using PutIo.Sharp.Models.Files.Response;
 
 namespace PutIo.Sharp.Clients
 {
@@ -25,8 +24,8 @@ namespace PutIo.Sharp.Clients
             _apiClient.DefaultRequestHeaders.Add("authorization", $"bearer {putioConfiguration.Token}");
 
             _uploadClient = putioConfiguration.UploadHttpClient ?? new HttpClient();
-            _apiClient.BaseAddress = new Uri(putioConfiguration.BaseUploadUrl);
-            _apiClient.DefaultRequestHeaders.Add("authorization", $"bearer {putioConfiguration.Token}");
+            _uploadClient.BaseAddress = new Uri(putioConfiguration.BaseUploadUrl);
+            _uploadClient.DefaultRequestHeaders.Add("authorization", $"bearer {putioConfiguration.Token}");
             
             Account = new PutIoAccountClient(this);
             Files = new PutIoFileClient(this);
@@ -76,12 +75,14 @@ namespace PutIo.Sharp.Clients
 
         internal async Task UploadFileAsync(UploadFileRequest request)
         {
-            using (var body = new MultipartContent())
+            using (var body = new MultipartFormDataContent())
             {
-                body.Add(new StringContent(request.Serialize(), Encoding.UTF8, "application/json"));
-                body.Add(new StreamContent(request.FileStream));
+                if (request.ParentId != null)
+                    body.Add(new StringContent(request.ParentId.Value.ToString()), "parent_id");
+                
+                body.Add(new ByteArrayContent(request.File), "file", request.FileName);
 
-                var response = await _uploadClient.PutAsync("files/upload", body);
+                var response = await _uploadClient.PostAsync("files/upload", body);
                 if (!response.IsSuccessStatusCode)
                 {
                     await HandleApiError(response);

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace PutIo.Sharp.Models.Files.Requests
 {
@@ -15,6 +16,7 @@ namespace PutIo.Sharp.Models.Files.Requests
             FileIds = fileIds;
         }
         
+        [JsonPropertyName("file_ids")]
         public IEnumerable<long> FileIds { get; set; }
         
         internal override string Serialize()

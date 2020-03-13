@@ -13,5 +13,8 @@ namespace PutIo.Sharp.Models.Files.Response
 
         [JsonPropertyName("cursor")]
         public string Cursor { get; set; }
+
+        [JsonPropertyName("status")]
+        public string Status { get; set; }
     }
 }

@@ -1,0 +1,29 @@
+﻿{
+  "cursor": null,
+  "files": [
+    {
+      "content_type": "video/x-matroska",
+      "crc32": "0356056d",
+      "created_at": "2019-12-18T18:51:45",
+      "extension": "mkv",
+      "file_type": "VIDEO",
+      "first_accessed_at": "2019-12-18T18:52:09",
+      "folder_type": "REGULAR",
+      "icon": "https://example.com",
+      "id": 686077953,
+      "is_hidden": false,
+      "is_mp4_available": true,
+      "is_shared": false,
+      "name": "The.Mandalorian.S01E07.mkv",
+      "opensubtitles_hash": "26a6b68a24dd31aa",
+      "parent_id": 686077952,
+      "screenshot": "https://example.com",
+      "sender_name": "exampleUser",
+      "size": 1438362013,
+      "start_from": 0,
+      "updated_at": "2019-12-18T18:51:45"
+    }
+  ],
+  "status": "OK",
+  "total": 1
+}

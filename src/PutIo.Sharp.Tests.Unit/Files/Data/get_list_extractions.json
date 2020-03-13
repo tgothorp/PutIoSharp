@@ -1,0 +1,36 @@
+﻿{
+  "extractions": [
+    {
+      "id": 24336726735,
+      "name": "The.Clone.Wars.TV.Season.7.zip",
+      "status": "IN_QUEUE",
+      "message": "Added to queue",
+      "num_parts": 1,
+      "files": [
+        {
+          "content_type": "video/x-matroska",
+          "crc32": "ed7a4f07",
+          "created_at": "2020-03-06T18:50:03",
+          "extension": "mkv",
+          "file_type": "VIDEO",
+          "first_accessed_at": "2020-03-06T18:50:13",
+          "folder_type": "REGULAR",
+          "icon": "https://example.com",
+          "id": 710522366,
+          "is_hidden": false,
+          "is_mp4_available": true,
+          "is_shared": false,
+          "mp4_size": 610555094,
+          "name": "Star.Wars.The.Clone.Wars.S07E03.mkv",
+          "need_convert": false,
+          "opensubtitles_hash": "93e4aa412345b47f",
+          "parent_id": 710522365,
+          "screenshot": "https://example.com",
+          "size": 618709468,
+          "start_from": 0,
+          "updated_at": "2020-03-06T18:50:03"
+        }
+      ]
+    }
+  ]
+}
