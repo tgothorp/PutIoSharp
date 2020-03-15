@@ -12,7 +12,7 @@ namespace PutIo.Sharp.Tests.Integration.Tests
         [Fact]
         public async Task UpdateAccountSettings()
         {
-            var token = "YOUR_TOKEN_GOES_HERE";
+            var token = "YOUR_TOKEN_HERE";
             var config = new PutioConfiguration(token);
             var client = new PutioApiClient(config);
 

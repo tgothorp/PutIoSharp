@@ -1,7 +1,9 @@
-﻿namespace PutIo.Sharp
+﻿using System.Net.Http;
+
+namespace PutIo.Sharp
 {
     public abstract class PutIoPostRequest
     {
-        internal abstract string Serialize();
+        internal abstract HttpContent GenerateRequestBody();
     }
 }

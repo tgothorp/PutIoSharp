@@ -5,7 +5,7 @@ namespace PutIo.Sharp.Models.Exceptions
     public class PutioError
     {
         [JsonPropertyName("error_id")]
-        public long? Id { get; set; }
+        public string Id { get; set; }
         
         [JsonPropertyName("error_message")]
         public string Message { get; set; }

@@ -61,6 +61,10 @@
       <Content Include="Files\Data\get_list_extractions.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="Transfers\Data\get_list_transfers.json" />
+      <Content Include="Transfers\Data\get_list_transfers.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

@@ -1,8 +1,6 @@
-﻿using System.Text.Json;
-
-namespace PutIo.Sharp.Models.Files.Requests
+﻿namespace PutIo.Sharp.Models.Files.Requests
 {
-    public class ConvertFileToMp4Request : PutIoPostRequest
+    public class ConvertFileToMp4Request
     {
         public ConvertFileToMp4Request(long fileId)
         {
@@ -13,10 +11,5 @@ namespace PutIo.Sharp.Models.Files.Requests
         /// The id of the file to be converted
         /// </summary>
         public long FileId { get; set; }
-
-        internal override string Serialize()
-        {
-            return JsonSerializer.Serialize(this);
-        }
     }
 }

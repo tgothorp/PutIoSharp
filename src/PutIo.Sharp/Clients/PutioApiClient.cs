@@ -37,7 +37,7 @@ namespace PutIo.Sharp.Clients
         {
             var body = requestObject is null 
                 ? new StringContent("", Encoding.UTF8, "application/json") 
-                : new StringContent(requestObject.Serialize(), Encoding.UTF8, "application/json");
+                : requestObject.GenerateRequestBody();
 
             var response = await _apiClient.PostAsync(url, body);
             if (!response.IsSuccessStatusCode)
@@ -48,8 +48,7 @@ namespace PutIo.Sharp.Clients
 
         internal async Task<T> ExecutePostWithResponseAsync<T>(string url, PutIoPostRequest requestObject)
         {
-            var body = new StringContent(requestObject.Serialize(), Encoding.UTF8, "application/json");
-            var response = await _apiClient.PostAsync(url, body);
+            var response = await _apiClient.PostAsync(url, requestObject.GenerateRequestBody());
 
             if (!response.IsSuccessStatusCode)
             {

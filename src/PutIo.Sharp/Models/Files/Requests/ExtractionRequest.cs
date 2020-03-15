@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -25,12 +27,12 @@ namespace PutIo.Sharp.Models.Files.Requests
         [JsonPropertyName("password")]
         public string Password { get; set; }
         
-        internal override string Serialize()
+        internal override HttpContent GenerateRequestBody()
         {
             if (FileIds is null || !FileIds.Any())
                 throw new ArgumentException("You must provide at least one file to extract");
             
-            return JsonSerializer.Serialize(this);
+            return new StringContent(JsonSerializer.Serialize(this), Encoding.UTF8, "application/json");
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -21,9 +22,9 @@ namespace PutIo.Sharp.Models.Transfers.Requests
         [JsonPropertyName("transfer_ids")]
         public IEnumerable<long> TransferIds { get; set; }
 
-        internal override string Serialize()
+        internal override HttpContent GenerateRequestBody()
         {
-            return JsonSerializer.Serialize(this);
+            return new MultipartFormDataContent {{new StringContent(string.Join(",", TransferIds)), "transfer_ids"}};
         }
     }
 }

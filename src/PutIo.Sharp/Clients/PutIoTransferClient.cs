@@ -25,25 +25,25 @@ namespace PutIo.Sharp.Clients
         /// <summary>
         /// Get a specific transfer
         /// </summary>
-        public async Task<Transfer> Transfer(long transferId)
+        public async Task<GetTransferResponse> Transfer(long transferId)
         {
-            return await _apiClient.ExecuteGetWithResponseAsync<Transfer>($"transfers/{transferId}");
+            return await _apiClient.ExecuteGetWithResponseAsync<GetTransferResponse>($"transfers/{transferId}");
         }
 
         /// <summary>
         /// Add a transfer from url, If you want to upload a torrent file, use /files/upload endpoint.
         /// </summary>
-        public async Task<Transfer> AddTransfer(AddTransferRequest request)
+        public async Task<AddTransferResponse> AddTransfer(AddTransferRequest request)
         {
-            return await _apiClient.ExecutePostWithResponseAsync<Transfer>("transfers/add", request);
+            return await _apiClient.ExecutePostWithResponseAsync<AddTransferResponse>("transfers/add", request);
         }
 
         /// <summary>
         /// Retry failed transfer 
         /// </summary>
-        public async Task<Transfer> RetryTransfer(long transferId)
+        public async Task<RetryTransferResponse> RetryTransfer(long transferId)
         {
-            return await _apiClient.ExecuteGetWithResponseAsync<Transfer>($"transfers/retry?id={transferId}");
+            return await _apiClient.ExecuteGetWithResponseAsync<RetryTransferResponse>($"transfers/retry?id={transferId}");
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace PutIo.Sharp.Clients
         /// <summary>
         /// Only removes transfer entries, does not remove files.
         /// </summary>
-        public async Task<CleanTransfersResponse> CleanTransfers(CancelTransfersRequest request)
+        public async Task<CleanTransfersResponse> CleanTransfers(CleanTransfersRequest request)
         {
             return await _apiClient.ExecutePostWithResponseAsync<CleanTransfersResponse>("transfers/clean", request);
         }

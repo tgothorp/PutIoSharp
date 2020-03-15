@@ -1,4 +1,6 @@
-﻿using System.Text.Json;
+﻿using System.Net.Http;
+using System.Text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace PutIo.Sharp.Models.Files.Requests
@@ -27,9 +29,9 @@ namespace PutIo.Sharp.Models.Files.Requests
         [JsonPropertyName("per_page")]
         public int? ResultsPerPage { get; set; }
 
-        internal override string Serialize()
+        internal override HttpContent GenerateRequestBody()
         {
-            return JsonSerializer.Serialize(this);
+            return new StringContent(JsonSerializer.Serialize(this), Encoding.UTF8, "application/json");
         }
     }
 }

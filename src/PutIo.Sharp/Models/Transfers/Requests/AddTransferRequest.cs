@@ -1,4 +1,6 @@
-﻿using System.Text.Json;
+﻿using System.Net.Http;
+using System.Text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace PutIo.Sharp.Models.Transfers.Requests
@@ -33,9 +35,14 @@ namespace PutIo.Sharp.Models.Transfers.Requests
         [JsonPropertyName("callback_url")]
         public string CallbackUrl { get; set; }
         
-        internal override string Serialize()
+        internal override HttpContent GenerateRequestBody()
         {
-            return JsonSerializer.Serialize(this);
+            var options = new JsonSerializerOptions
+            {
+                 IgnoreNullValues = true
+            };
+            
+            return new StringContent(JsonSerializer.Serialize(this, options), Encoding.UTF8, "application/json");
         }
     }
 }

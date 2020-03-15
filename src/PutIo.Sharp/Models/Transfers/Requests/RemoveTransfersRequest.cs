@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -24,18 +25,24 @@ namespace PutIo.Sharp.Models.Transfers.Requests
             TransferIds = transferIds;
         }
 
-        [JsonPropertyName("remove_filter")]
         public string RemoveFilter { get; set; }
 
-        [JsonPropertyName("transfer_ids")]
         public IEnumerable<long> TransferIds { get; set; }
 
-        internal override string Serialize()
+        internal override HttpContent GenerateRequestBody()
         {
             if (RemoveFilter is null && (TransferIds is null || !TransferIds.Any()))
                 throw new ArgumentException("If no filter is provided then at least one transfer id must be provided");
 
-            return JsonSerializer.Serialize(this);
+            var body = new MultipartFormDataContent();
+            
+            if (TransferIds != null)
+                body.Add(new StringContent(string.Join(",", TransferIds)), "transfer_ids");
+            
+            if (RemoveFilter != null)
+                body.Add(new StringContent(RemoveFilter), "remove_filter");
+
+            return body;
         }
     }
 }
