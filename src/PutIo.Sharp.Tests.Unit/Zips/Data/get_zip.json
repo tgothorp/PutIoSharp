@@ -1,0 +1,13 @@
+﻿{
+  "missing_files": [
+    {
+      "id": 67372947,
+      "name": "A Missing File",
+      "missing": true
+    }
+  ],
+  "size": 2826293,
+  "status": "OK",
+  "url": "http://example.com",
+  "zip_status": "DONE"
+}

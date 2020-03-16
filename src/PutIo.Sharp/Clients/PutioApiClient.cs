@@ -14,9 +14,10 @@ namespace PutIo.Sharp.Clients
         private readonly HttpClient _apiClient;
         private readonly HttpClient _uploadClient;
 
-        public PutIoAccountClient Account;
-        public PutIoFileClient Files;
-        public PutIoTransferClient Transfers;
+        public readonly PutIoAccountClient Account;
+        public readonly PutIoFileClient Files;
+        public readonly PutIoTransferClient Transfers;
+        public readonly PutIoZipClient Zips;
 
         public PutioApiClient(PutioConfiguration putioConfiguration)
         {
@@ -31,6 +32,7 @@ namespace PutIo.Sharp.Clients
             Account = new PutIoAccountClient(this);
             Files = new PutIoFileClient(this);
             Transfers = new PutIoTransferClient(this);
+            Zips = new PutIoZipClient(this);
         }
 
         internal async Task ExecutePostAsync(string url, PutIoPostRequest requestObject = null)

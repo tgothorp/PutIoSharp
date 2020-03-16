@@ -65,6 +65,18 @@
       <Content Include="Transfers\Data\get_list_transfers.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="Zips\Data\get_zip.json" />
+      <Content Include="Zips\Data\get_zip.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="Zips\Data\post_create_zip.json" />
+      <Content Include="Zips\Data\post_create_zip.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="Zips\Data\get_list_zips.json" />
+      <Content Include="Zips\Data\get_list_zips.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>
