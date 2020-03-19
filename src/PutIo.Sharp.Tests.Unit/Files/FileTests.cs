@@ -175,7 +175,7 @@ namespace PutIo.Sharp.Tests.Unit.Files
         {
             OverrideApiResponse(HttpStatusCode.OK, System.IO.File.ReadAllText($"{Path.GetDirectoryName(System.Reflection.Assembly.GetAssembly(typeof(FileTests)).Location)}/Files/Data/get_mp4_conversion_status.json"));
 
-            var mp4ConversionStatus = await PutioApiClient.Files.Mp4ConversionStatus(new Mp4ConversionStatusRequest(12345));
+            var mp4ConversionStatus = await PutioApiClient.Files.Mp4ConversionStatus(12345);
             mp4ConversionStatus.ShouldNotBeNull();
             mp4ConversionStatus.Size.ShouldBe(86544545);
             mp4ConversionStatus.PercentageComplete.ShouldBe(56);
@@ -187,7 +187,7 @@ namespace PutIo.Sharp.Tests.Unit.Files
         {
             OverrideApiResponse(HttpStatusCode.OK, System.IO.File.ReadAllText($"{Path.GetDirectoryName(System.Reflection.Assembly.GetAssembly(typeof(FileTests)).Location)}/Files/Data/get_list_subtitles.json"));
 
-            var listSubtitles = await PutioApiClient.Files.ListSubtitles(new SubtitlesRequest(12345));
+            var listSubtitles = await PutioApiClient.Files.ListSubtitles(12345);
 
             listSubtitles.ShouldNotBeNull();
             listSubtitles.Count().ShouldBe(2);

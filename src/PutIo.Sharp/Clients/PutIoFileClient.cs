@@ -75,26 +75,26 @@ namespace PutIo.Sharp.Clients
         /// <summary>
         /// Converts a file to MP4
         /// </summary>
-        public async Task ConvertFileToMp4(ConvertFileToMp4Request request)
+        public async Task ConvertFileToMp4(long fileId)
         {
-            await _apiClient.ExecutePostAsync($"files/{request.FileId}/mp4");
+            await _apiClient.ExecutePostAsync($"files/{fileId}/mp4");
         }
 
         /// <summary>
         /// Gets the MP4 conversion status for a file
         /// </summary>
-        public async Task<Mp4> Mp4ConversionStatus(Mp4ConversionStatusRequest request)
+        public async Task<Mp4> Mp4ConversionStatus(long fileId)
         {
-            var response = await _apiClient.ExecuteGetWithResponseAsync<Mp4ConversionStatusResponse>($"files/{request.FileId}/mp4");
+            var response = await _apiClient.ExecuteGetWithResponseAsync<Mp4ConversionStatusResponse>($"files/{fileId}/mp4");
             return response.Mp4;
         }
 
         /// <summary>
         /// Get available subtitles for a file for user's preferred language
         /// </summary>
-        public async Task<List<Subtitle>> ListSubtitles(SubtitlesRequest request)
+        public async Task<List<Subtitle>> ListSubtitles(long fileId)
         {
-            var response = await _apiClient.ExecuteGetWithResponseAsync<SubtitlesResponse>($"files/{request.FileId}/subtitles");
+            var response = await _apiClient.ExecuteGetWithResponseAsync<SubtitlesResponse>($"files/{fileId}/subtitles");
             return response.Subtitles;
         }
 
@@ -159,9 +159,9 @@ namespace PutIo.Sharp.Clients
         /// <summary>
         /// Deleted the position of a video
         /// </summary>
-        public async Task DeleteVideoPosition(DeleteVideoPositionRequest request)
+        public async Task DeleteVideoPosition(long fileId)
         {
-            await _apiClient.ExecutePostAsync($"files/{request.FileId}/start-from");
+            await _apiClient.ExecutePostAsync($"files/{fileId}/start-from");
         }
     }
 }
