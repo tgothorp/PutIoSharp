@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace PutIo.Sharp.Models.Friends
+namespace PutIo.Sharp.Models.Shared
 {
     public class Friend
     {

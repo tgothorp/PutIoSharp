@@ -85,6 +85,14 @@
       <Content Include="Friends\Data\get_list_friends.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="Shares\Data\get_list_shares.json" />
+      <Content Include="Shares\Data\get_list_shares.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="Shares\Data\get_shared_with.json" />
+      <Content Include="Shares\Data\get_shared_with.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

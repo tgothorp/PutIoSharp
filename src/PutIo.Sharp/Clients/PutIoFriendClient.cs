@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using PutIo.Sharp.Models.Friends;
 using PutIo.Sharp.Models.Friends.Responses;
+using PutIo.Sharp.Models.Shared;
 
 namespace PutIo.Sharp.Clients
 {

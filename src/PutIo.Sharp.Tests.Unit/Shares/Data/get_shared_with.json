@@ -1,0 +1,14 @@
+﻿{
+  "shared-with": [
+    {
+      "user_name": "FirstUser",
+      "user_avatar_url": "/avatars/firstuser.png",
+      "share_id": 3913572317
+    },
+    {
+      "user_name": "SecondUser",
+      "user_avatar_url": "/avatars/seconduser.png",
+      "share_id": 3913572318
+    }
+  ]
+}
