@@ -1,0 +1,14 @@
+﻿{
+  "friends": [
+    {
+      "name": "MyBestFriend",
+      "avatar_url": "http://www.example.com/image1.jpg",
+      "id": 1
+    },
+    {
+      "name": "MySecondBestFriend",
+      "avatar_url": "http://www.example.com/image2.jpg",
+      "id": 2
+    }
+  ]
+}

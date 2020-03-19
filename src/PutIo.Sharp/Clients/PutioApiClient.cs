@@ -18,6 +18,7 @@ namespace PutIo.Sharp.Clients
         public readonly PutIoFileClient Files;
         public readonly PutIoTransferClient Transfers;
         public readonly PutIoZipClient Zips;
+        public readonly PutIoFriendClient Friends;
 
         public PutioApiClient(PutioConfiguration putioConfiguration)
         {
@@ -33,6 +34,7 @@ namespace PutIo.Sharp.Clients
             Files = new PutIoFileClient(this);
             Transfers = new PutIoTransferClient(this);
             Zips = new PutIoZipClient(this);
+            Friends = new PutIoFriendClient(this);
         }
 
         internal async Task ExecutePostAsync(string url, PutIoPostRequest requestObject = null)

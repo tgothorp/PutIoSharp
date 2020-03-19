@@ -77,6 +77,14 @@
       <Content Include="Zips\Data\get_list_zips.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="Friend\Data\get_list_friend_requests.json" />
+      <Content Include="Friends\Data\get_list_friend_requests.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="Friend\Data\get_list_friends.json" />
+      <Content Include="Friends\Data\get_list_friends.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>
