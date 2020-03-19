@@ -23,10 +23,9 @@ namespace PutIo.Sharp.Tests.Integration.Tests
             var fileName = RandomStringGenerator.Generate(10);
             
             // Create new folder in root directory
-            var folder = await client.Files.CreateFolder(new CreateFolderRequest(folderName, 0));
-            folder.ShouldNotBeNull();
-            folder.NewFolder.ShouldNotBeNull();
-            var folderId = folder.NewFolder.Id;
+            var newFolder = await client.Files.CreateFolder(new CreateFolderRequest(folderName, 0));
+            newFolder.ShouldNotBeNull();
+            var folderId = newFolder.Id;
 
             // Upload image to the new folder
             var fileBytes = System.IO.File.ReadAllBytes($"{Path.GetDirectoryName(System.Reflection.Assembly.GetAssembly(typeof(FileTests)).Location)}/Data/testimage.jpg");
@@ -42,16 +41,16 @@ namespace PutIo.Sharp.Tests.Integration.Tests
             filesInFolder.Files.Count().ShouldBe(1);
             
             // Put the image in a zip
-            var zipResponse = await client.Zips.CreateZip(new CreateZipRequest(filesInFolder.Files.First().Id));
-            zipResponse.ShouldNotBeNull();
+            var zipId = await client.Zips.CreateZip(new CreateZipRequest(filesInFolder.Files.First().Id));
+            zipId.ShouldNotBeNull();
             
             // Lis active zip operations
             var zipOperations = await client.Zips.ListZips();
             zipOperations.ShouldNotBeNull();
-            zipOperations.Zips.Count().ShouldBe(1);
+            zipOperations.Count().ShouldBe(1);
 
             // Get the status of the zip
-            var zip = await client.Zips.GetZip(zipResponse.ZipId);
+            var zip = await client.Zips.GetZip(zipId);
             zip.ShouldNotBeNull();
         }
         

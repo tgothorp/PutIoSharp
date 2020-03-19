@@ -17,14 +17,11 @@ namespace PutIo.Sharp.Tests.Unit.Account
         {
             OverrideApiResponse(HttpStatusCode.OK, File.ReadAllText($"{Path.GetDirectoryName(System.Reflection.Assembly.GetAssembly(typeof(ErrorTests)).Location)}/Account/Data/get_account_info.json"));
 
-            var accountInfo = await PutioApiClient.Account.GetAccountInfo();
-            accountInfo.ShouldNotBeNull();
-            accountInfo.Status.ShouldBe("OK");
-            accountInfo.AccountInfo.ShouldNotBeNull();
-            accountInfo.AccountInfo.Disk.ShouldNotBeNull();
-            accountInfo.AccountInfo.AccountSettings.ShouldNotBeNull();
-
-            var info = accountInfo.AccountInfo;
+            var info = await PutioApiClient.Account.GetAccountInfo();
+            info.ShouldNotBeNull();
+            info.Disk.ShouldNotBeNull();
+            info.AccountSettings.ShouldNotBeNull();
+            
             info.AccountActive.ShouldBeTrue();
             info.AvatarUrl.ShouldBe("https://www.gravatar.com/avatar/00000000000000000000000000000000.jpg?s=50");
             info.CanCreateSubAccount.ShouldBeFalse();
@@ -91,32 +88,30 @@ namespace PutIo.Sharp.Tests.Unit.Account
 
             var accountSettings = await PutioApiClient.Account.GetAccountSettings();
             accountSettings.ShouldNotBeNull();
-            accountSettings.Status.ShouldBe("OK");
-            accountSettings.Settings.ShouldNotBeNull();
             
-            accountSettings.Settings.BetaUser.ShouldBeTrue();
-            accountSettings.Settings.CallbackUrl.ShouldBeNull();
-            accountSettings.Settings.DarkTheme.ShouldBeTrue();
-            accountSettings.Settings.DefaultDownloadFolder.ShouldBe(0);
-            accountSettings.Settings.FluidLayout.ShouldBeFalse();
-            accountSettings.Settings.HistoryEnabled.ShouldBeTrue();
-            accountSettings.Settings.IsInvisible.ShouldBeTrue();
-            accountSettings.Settings.Locale.ShouldBeNull();
-            accountSettings.Settings.LoginMailsEnabled.ShouldBeTrue();
-            accountSettings.Settings.NextEpisode.ShouldBeTrue();
-            accountSettings.Settings.PushoverToken.ShouldBeNull();
-            accountSettings.Settings.SortBy.ShouldBe(FileSort.DateCreatedDescending);
-            accountSettings.Settings.StartFrom.ShouldBeFalse();
+            accountSettings.BetaUser.ShouldBeTrue();
+            accountSettings.CallbackUrl.ShouldBeNull();
+            accountSettings.DarkTheme.ShouldBeTrue();
+            accountSettings.DefaultDownloadFolder.ShouldBe(0);
+            accountSettings.FluidLayout.ShouldBeFalse();
+            accountSettings.HistoryEnabled.ShouldBeTrue();
+            accountSettings.IsInvisible.ShouldBeTrue();
+            accountSettings.Locale.ShouldBeNull();
+            accountSettings.LoginMailsEnabled.ShouldBeTrue();
+            accountSettings.NextEpisode.ShouldBeTrue();
+            accountSettings.PushoverToken.ShouldBeNull();
+            accountSettings.SortBy.ShouldBe(FileSort.DateCreatedDescending);
+            accountSettings.StartFrom.ShouldBeFalse();
             
-            accountSettings.Settings.SubtitleLanguages.Count.ShouldBe(1);
-            accountSettings.Settings.SubtitleLanguages.ShouldContain(SubtitleLanguage.English);
+            accountSettings.SubtitleLanguages.Count.ShouldBe(1);
+            accountSettings.SubtitleLanguages.ShouldContain(SubtitleLanguage.English);
             
-            accountSettings.Settings.TheaterMode.ShouldBeTrue();
-            accountSettings.Settings.TransferSortBy.ShouldBeNull();
-            accountSettings.Settings.TrashEnabled.ShouldBeTrue();
-            accountSettings.Settings.TunnelRouteName.ShouldBe("London");
-            accountSettings.Settings.UsePrivateDownloadIp.ShouldBeFalse();
-            accountSettings.Settings.VideoPlayer.ShouldBeNull();
+            accountSettings.TheaterMode.ShouldBeTrue();
+            accountSettings.TransferSortBy.ShouldBeNull();
+            accountSettings.TrashEnabled.ShouldBeTrue();
+            accountSettings.TunnelRouteName.ShouldBe("London");
+            accountSettings.UsePrivateDownloadIp.ShouldBeFalse();
+            accountSettings.VideoPlayer.ShouldBeNull();
         }
     }
 }

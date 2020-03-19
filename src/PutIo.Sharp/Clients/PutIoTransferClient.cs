@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using PutIo.Sharp.Models.Transfers;
 using PutIo.Sharp.Models.Transfers.Requests;
 using PutIo.Sharp.Models.Transfers.Responses;
@@ -17,33 +18,37 @@ namespace PutIo.Sharp.Clients
         /// <summary>
         /// List all transfers for user
         /// </summary>
-        public async Task<ListTransfersResponse> ListTransfers()
+        public async Task<List<Transfer>> ListTransfers()
         {
-            return await _apiClient.ExecuteGetWithResponseAsync<ListTransfersResponse>("transfers/list");
+            var response = await _apiClient.ExecuteGetWithResponseAsync<ListTransfersResponse>("transfers/list");
+            return response.Transfers;
         }
 
         /// <summary>
         /// Get a specific transfer
         /// </summary>
-        public async Task<GetTransferResponse> Transfer(long transferId)
+        public async Task<Transfer> Transfer(long transferId)
         {
-            return await _apiClient.ExecuteGetWithResponseAsync<GetTransferResponse>($"transfers/{transferId}");
+            var response = await _apiClient.ExecuteGetWithResponseAsync<GetTransferResponse>($"transfers/{transferId}");
+            return response.Transfer;
         }
 
         /// <summary>
         /// Add a transfer from url, If you want to upload a torrent file, use /files/upload endpoint.
         /// </summary>
-        public async Task<AddTransferResponse> AddTransfer(AddTransferRequest request)
+        public async Task<Transfer> AddTransfer(AddTransferRequest request)
         {
-            return await _apiClient.ExecutePostWithResponseAsync<AddTransferResponse>("transfers/add", request);
+            var response = await _apiClient.ExecutePostWithResponseAsync<AddTransferResponse>("transfers/add", request);
+            return response.Transfer;
         }
 
         /// <summary>
         /// Retry failed transfer 
         /// </summary>
-        public async Task<RetryTransferResponse> RetryTransfer(long transferId)
+        public async Task<Transfer> RetryTransfer(long transferId)
         {
-            return await _apiClient.ExecuteGetWithResponseAsync<RetryTransferResponse>($"transfers/retry?id={transferId}");
+            var response = await _apiClient.ExecuteGetWithResponseAsync<RetryTransferResponse>($"transfers/retry?id={transferId}");
+            return response.Transfer;
         }
 
         /// <summary>

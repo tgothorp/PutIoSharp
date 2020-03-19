@@ -35,7 +35,7 @@ namespace PutIo.Sharp.Tests.Integration.Tests
             // Verify setting has been updated
             accountSettings = await client.Account.GetAccountSettings();
             accountSettings.ShouldNotBeNull();
-            accountSettings.Settings.IsInvisible.ShouldBeTrue();
+            accountSettings.IsInvisible.ShouldBeTrue();
             
             // Set IsInvisible to false
             updateAccountSettings = new UpdateAccountSettingsRequest
@@ -48,7 +48,7 @@ namespace PutIo.Sharp.Tests.Integration.Tests
             // Verify settings has been updated
             accountSettings = await client.Account.GetAccountSettings();
             accountSettings.ShouldNotBeNull();
-            accountSettings.Settings.IsInvisible.ShouldBeFalse();
+            accountSettings.IsInvisible.ShouldBeFalse();
         }
     }
 }

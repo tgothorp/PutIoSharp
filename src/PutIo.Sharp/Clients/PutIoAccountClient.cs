@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using PutIo.Sharp.Models.Account;
 using PutIo.Sharp.Models.Account.Requests;
 using PutIo.Sharp.Models.Account.Response;
 
@@ -16,17 +17,19 @@ namespace PutIo.Sharp.Clients
         /// <summary>
         /// Get account info
         /// </summary>
-        public async Task<GetAccountInfoResponse> GetAccountInfo()
+        public async Task<AccountInfo> GetAccountInfo()
         {
-            return await _apiClient.ExecuteGetWithResponseAsync<GetAccountInfoResponse>("account/info");
+            var response = await _apiClient.ExecuteGetWithResponseAsync<GetAccountInfoResponse>("account/info");
+            return response.AccountInfo;
         }
 
         /// <summary>
         /// Get account settings (these are included when calling <see cref="GetAccountInfo"/>)
         /// </summary>
-        public async Task<GetAccountSettingsResponse> GetAccountSettings()
+        public async Task<AccountSettings> GetAccountSettings()
         {
-            return await _apiClient.ExecuteGetWithResponseAsync<GetAccountSettingsResponse>("account/settings");
+            var response = await _apiClient.ExecuteGetWithResponseAsync<GetAccountSettingsResponse>("account/settings");
+            return response.Settings;
         }
         
         /// <summary>

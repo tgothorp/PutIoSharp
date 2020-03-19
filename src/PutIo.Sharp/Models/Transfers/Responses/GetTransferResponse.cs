@@ -2,7 +2,7 @@
 
 namespace PutIo.Sharp.Models.Transfers.Responses
 {
-    public class GetTransferResponse
+    internal class GetTransferResponse
     {
         [JsonPropertyName("transfer")]
         public Transfer Transfer { get; set; }

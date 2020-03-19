@@ -22,26 +22,23 @@ namespace PutIo.Sharp.Tests.Integration.Tests
             // List all transfers
             var allTransfersResponse = await client.Transfers.ListTransfers();
             allTransfersResponse.ShouldNotBeNull();
-            allTransfersResponse.Transfers.ShouldNotBeNull();
 
             // Add transfer
             var addTransferResponse = await client.Transfers.AddTransfer(new AddTransferRequest("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
             addTransferResponse.ShouldNotBeNull();
-            addTransferResponse.Transfer.ShouldNotBeNull();
 
             // Wait a bit for the transfer to complete
             await Task.Delay(5000);
 
             // Get status of transfer, it should have completed
-            var transferResponse = await client.Transfers.Transfer(addTransferResponse.Transfer.Id);
+            var transferResponse = await client.Transfers.Transfer(addTransferResponse.Id);
             transferResponse.ShouldNotBeNull();
-            transferResponse.Transfer.ShouldNotBeNull();
 
             // Delete the resulting file
-            await client.Files.DeleteFiles(new DeleteFilesRequest(transferResponse.Transfer.FileId.Value));
+            await client.Files.DeleteFiles(new DeleteFilesRequest(transferResponse.FileId.Value));
 
             // Remove the transfer
-            await client.Transfers.CleanTransfers(new CleanTransfersRequest(transferResponse.Transfer.Id));
+            await client.Transfers.CleanTransfers(new CleanTransfersRequest(transferResponse.Id));
         }
     }
 }

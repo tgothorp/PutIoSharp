@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using PutIo.Sharp.Models.Files;
 using PutIo.Sharp.Models.Files.Requests;
 using PutIo.Sharp.Models.Files.Response;
 
@@ -48,9 +50,10 @@ namespace PutIo.Sharp.Clients
         /// <summary>
         /// Creates a folder
         /// </summary>
-        public async Task<CreateFolderResponse> CreateFolder(CreateFolderRequest request)
+        public async Task<File> CreateFolder(CreateFolderRequest request)
         {
-            return await _apiClient.ExecutePostWithResponseAsync<CreateFolderResponse>("files/create-folder", request);
+            var response = await _apiClient.ExecutePostWithResponseAsync<CreateFolderResponse>("files/create-folder", request);
+            return response.NewFolder;
         }
 
         /// <summary>
@@ -80,17 +83,19 @@ namespace PutIo.Sharp.Clients
         /// <summary>
         /// Gets the MP4 conversion status for a file
         /// </summary>
-        public async Task<Mp4ConversionStatusResponse> Mp4ConversionStatus(Mp4ConversionStatusRequest request)
+        public async Task<Mp4> Mp4ConversionStatus(Mp4ConversionStatusRequest request)
         {
-            return await _apiClient.ExecuteGetWithResponseAsync<Mp4ConversionStatusResponse>($"files/{request.FileId}/mp4");
+            var response = await _apiClient.ExecuteGetWithResponseAsync<Mp4ConversionStatusResponse>($"files/{request.FileId}/mp4");
+            return response.Mp4;
         }
 
         /// <summary>
         /// Get available subtitles for a file for user's preferred language
         /// </summary>
-        public async Task<SubtitlesResponse> ListSubtitles(SubtitlesRequest request)
+        public async Task<List<Subtitle>> ListSubtitles(SubtitlesRequest request)
         {
-            return await _apiClient.ExecuteGetWithResponseAsync<SubtitlesResponse>($"files/{request.FileId}/subtitles");
+            var response = await _apiClient.ExecuteGetWithResponseAsync<SubtitlesResponse>($"files/{request.FileId}/subtitles");
+            return response.Subtitles;
         }
 
         /// <summary>
@@ -128,17 +133,19 @@ namespace PutIo.Sharp.Clients
         /// <summary>
         /// List active extractions
         /// </summary>
-        public async Task<ListExtractionsResponse> ListExtractions()
+        public async Task<List<Extraction>> ListExtractions()
         {
-            return await _apiClient.ExecuteGetWithResponseAsync<ListExtractionsResponse>("files/extract");
+            var response = await _apiClient.ExecuteGetWithResponseAsync<ListExtractionsResponse>("files/extract");
+            return response.Extractions;
         }
 
         /// <summary>
         /// Extract ZIP and RAR archives
         /// </summary>
-        public async Task<ExtractionsResponse> Extract(ExtractionRequest request)
+        public async Task<List<Extraction>> Extract(ExtractionRequest request)
         {
-            return await _apiClient.ExecutePostWithResponseAsync<ExtractionsResponse>("files/extract", request);
+            var response = await _apiClient.ExecutePostWithResponseAsync<ExtractionsResponse>("files/extract", request);
+            return response.Extractions;
         }
 
         /// <summary>

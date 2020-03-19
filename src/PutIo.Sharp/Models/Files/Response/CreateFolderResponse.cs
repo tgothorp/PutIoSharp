@@ -2,7 +2,7 @@
 
 namespace PutIo.Sharp.Models.Files.Response
 {
-    public class CreateFolderResponse
+    internal class CreateFolderResponse
     {
         [JsonPropertyName("file")]
         public File NewFolder { get; set; }

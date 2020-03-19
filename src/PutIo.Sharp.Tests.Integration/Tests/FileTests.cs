@@ -25,10 +25,9 @@ namespace PutIo.Sharp.Tests.Integration.Tests
             var fileName = RandomStringGenerator.Generate(10);
 
             // Create new folder in root directory
-            var folder = await client.Files.CreateFolder(new CreateFolderRequest(folderName, 0));
-            folder.ShouldNotBeNull();
-            folder.NewFolder.ShouldNotBeNull();
-            var folderId = folder.NewFolder.Id;
+            var newFolder = await client.Files.CreateFolder(new CreateFolderRequest(folderName, 0));
+            newFolder.ShouldNotBeNull();
+            var folderId = newFolder.Id;
 
             // Upload image to the new folder
             var fileBytes = System.IO.File.ReadAllBytes($"{Path.GetDirectoryName(System.Reflection.Assembly.GetAssembly(typeof(FileTests)).Location)}/Data/testimage.jpg");

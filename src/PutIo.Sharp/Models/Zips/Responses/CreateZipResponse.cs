@@ -2,7 +2,7 @@
 
 namespace PutIo.Sharp.Models.Zips.Responses
 {
-    public class CreateZipResponse
+    internal class CreateZipResponse
     {
         [JsonPropertyName("zip_id")]
         public long ZipId { get; set; }

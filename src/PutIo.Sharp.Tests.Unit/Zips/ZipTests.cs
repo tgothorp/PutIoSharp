@@ -17,7 +17,7 @@ namespace PutIo.Sharp.Tests.Unit.Zips
             OverrideApiResponse(HttpStatusCode.OK, System.IO.File.ReadAllText($"{Path.GetDirectoryName(System.Reflection.Assembly.GetAssembly(typeof(ZipTests)).Location)}/Zips/Data/post_create_zip.json"));
 
             var zip = await PutioApiClient.Zips.CreateZip(new CreateZipRequest(123));
-            zip.ZipId.ShouldBe(12345);
+            zip.ShouldBe(12345);
         }
 
         [Fact]
@@ -27,10 +27,10 @@ namespace PutIo.Sharp.Tests.Unit.Zips
 
             var allZips = await PutioApiClient.Zips.ListZips();
             allZips.ShouldNotBeNull();
-            allZips.Zips.ShouldNotBeNull();
-            allZips.Zips.Count().ShouldBe(1);
+            allZips.ShouldNotBeNull();
+            allZips.Count().ShouldBe(1);
 
-            var zip = allZips.Zips.Single();
+            var zip = allZips.Single();
             zip.Id.ShouldBe(12345);
             
             zip.CreatedAt.Year.ShouldBe(2020);

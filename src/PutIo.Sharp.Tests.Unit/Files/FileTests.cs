@@ -134,39 +134,39 @@ namespace PutIo.Sharp.Tests.Unit.Files
             
             var createFolderResponse = await PutioApiClient.Files.CreateFolder(new CreateFolderRequest("ExampleFolder", 0));
             createFolderResponse.ShouldNotBeNull();
-            createFolderResponse.NewFolder.ShouldNotBeNull();
-            createFolderResponse.NewFolder.ContentType.ShouldBe("application/x-directory");
-            createFolderResponse.NewFolder.CRC32Checksum.ShouldBeNull();
+            createFolderResponse.ShouldNotBeNull();
+            createFolderResponse.ContentType.ShouldBe("application/x-directory");
+            createFolderResponse.CRC32Checksum.ShouldBeNull();
             
-            createFolderResponse.NewFolder.CreatedAt.Year.ShouldBe(2020);
-            createFolderResponse.NewFolder.CreatedAt.Month.ShouldBe(03);
-            createFolderResponse.NewFolder.CreatedAt.Day.ShouldBe(13);
-            createFolderResponse.NewFolder.CreatedAt.Hour.ShouldBe(09);
-            createFolderResponse.NewFolder.CreatedAt.Minute.ShouldBe(17);
-            createFolderResponse.NewFolder.CreatedAt.Second.ShouldBe(01);
+            createFolderResponse.CreatedAt.Year.ShouldBe(2020);
+            createFolderResponse.CreatedAt.Month.ShouldBe(03);
+            createFolderResponse.CreatedAt.Day.ShouldBe(13);
+            createFolderResponse.CreatedAt.Hour.ShouldBe(09);
+            createFolderResponse.CreatedAt.Minute.ShouldBe(17);
+            createFolderResponse.CreatedAt.Second.ShouldBe(01);
             
-            createFolderResponse.NewFolder.Extension.ShouldBeNull();
-            createFolderResponse.NewFolder.FileType.ShouldBe(FileType.Folder);
-            createFolderResponse.NewFolder.FirstAccessedAt.ShouldBeNull();
-            createFolderResponse.NewFolder.FolderType.ShouldBe("REGULAR");
-            createFolderResponse.NewFolder.Icon.ShouldBe("https://api.put.io/images/file_types/folder.png");
-            createFolderResponse.NewFolder.Id.ShouldBe(711970231);
-            createFolderResponse.NewFolder.IsHidden.ShouldBeFalse();
-            createFolderResponse.NewFolder.IsMp4Available.ShouldBeFalse();
-            createFolderResponse.NewFolder.IsShared.ShouldBeFalse();
-            createFolderResponse.NewFolder.Name.ShouldBe("ExampleFolder");
-            createFolderResponse.NewFolder.OpenSubtitlesHash.ShouldBeNull();
-            createFolderResponse.NewFolder.ParentId.ShouldBe(0);
-            createFolderResponse.NewFolder.Screenshot.ShouldBeNull();
-            createFolderResponse.NewFolder.Size.ShouldBe(0);
-            createFolderResponse.NewFolder.SortBy.ShouldBe(FileSort.DateCreatedDescending);
+            createFolderResponse.Extension.ShouldBeNull();
+            createFolderResponse.FileType.ShouldBe(FileType.Folder);
+            createFolderResponse.FirstAccessedAt.ShouldBeNull();
+            createFolderResponse.FolderType.ShouldBe("REGULAR");
+            createFolderResponse.Icon.ShouldBe("https://api.put.io/images/file_types/folder.png");
+            createFolderResponse.Id.ShouldBe(711970231);
+            createFolderResponse.IsHidden.ShouldBeFalse();
+            createFolderResponse.IsMp4Available.ShouldBeFalse();
+            createFolderResponse.IsShared.ShouldBeFalse();
+            createFolderResponse.Name.ShouldBe("ExampleFolder");
+            createFolderResponse.OpenSubtitlesHash.ShouldBeNull();
+            createFolderResponse.ParentId.ShouldBe(0);
+            createFolderResponse.Screenshot.ShouldBeNull();
+            createFolderResponse.Size.ShouldBe(0);
+            createFolderResponse.SortBy.ShouldBe(FileSort.DateCreatedDescending);
             
-            createFolderResponse.NewFolder.UpdatedAt.Year.ShouldBe(2020);
-            createFolderResponse.NewFolder.UpdatedAt.Month.ShouldBe(03);
-            createFolderResponse.NewFolder.UpdatedAt.Day.ShouldBe(13);
-            createFolderResponse.NewFolder.UpdatedAt.Hour.ShouldBe(09);
-            createFolderResponse.NewFolder.UpdatedAt.Minute.ShouldBe(17);
-            createFolderResponse.NewFolder.UpdatedAt.Second.ShouldBe(01);
+            createFolderResponse.UpdatedAt.Year.ShouldBe(2020);
+            createFolderResponse.UpdatedAt.Month.ShouldBe(03);
+            createFolderResponse.UpdatedAt.Day.ShouldBe(13);
+            createFolderResponse.UpdatedAt.Hour.ShouldBe(09);
+            createFolderResponse.UpdatedAt.Minute.ShouldBe(17);
+            createFolderResponse.UpdatedAt.Second.ShouldBe(01);
             
         }
 
@@ -177,9 +177,9 @@ namespace PutIo.Sharp.Tests.Unit.Files
 
             var mp4ConversionStatus = await PutioApiClient.Files.Mp4ConversionStatus(new Mp4ConversionStatusRequest(12345));
             mp4ConversionStatus.ShouldNotBeNull();
-            mp4ConversionStatus.Mp4.Size.ShouldBe(86544545);
-            mp4ConversionStatus.Mp4.PercentageComplete.ShouldBe(56);
-            mp4ConversionStatus.Mp4.Status.ShouldBe("IN_QUEUE");
+            mp4ConversionStatus.Size.ShouldBe(86544545);
+            mp4ConversionStatus.PercentageComplete.ShouldBe(56);
+            mp4ConversionStatus.Status.ShouldBe("IN_QUEUE");
         }
 
         [Fact]
@@ -190,15 +190,15 @@ namespace PutIo.Sharp.Tests.Unit.Files
             var listSubtitles = await PutioApiClient.Files.ListSubtitles(new SubtitlesRequest(12345));
 
             listSubtitles.ShouldNotBeNull();
-            listSubtitles.Subtitles.Count().ShouldBe(2);
+            listSubtitles.Count().ShouldBe(2);
             
-            var englishSubs = listSubtitles.Subtitles.SingleOrDefault(x => x.Language == "English");
+            var englishSubs = listSubtitles.SingleOrDefault(x => x.Language == "English");
             englishSubs.ShouldNotBeNull();
             englishSubs.Key.ShouldBe("V7mVadfvq34erarjy9tqj0435hgare");
             englishSubs.Name.ShouldBe("MyEnglishSubs.srt");
             englishSubs.Source.ShouldBe("folder");
             
-            var koreanSubs = listSubtitles.Subtitles.SingleOrDefault(x => x.Language == "Korean");
+            var koreanSubs = listSubtitles.SingleOrDefault(x => x.Language == "Korean");
             koreanSubs.ShouldNotBeNull();
             koreanSubs.Key.ShouldBe("gggfVAthkFJJKdAd75VVssfdfdMi8As3");
             koreanSubs.Name.ShouldBe("MyKoreanSubs.srt");
@@ -212,9 +212,9 @@ namespace PutIo.Sharp.Tests.Unit.Files
 
             var listExtractions = await PutioApiClient.Files.ListExtractions();
             listExtractions.ShouldNotBeNull();
-            listExtractions.Extractions.Count().ShouldBe(1);
+            listExtractions.Count().ShouldBe(1);
 
-            var extraction = listExtractions.Extractions.SingleOrDefault();
+            var extraction = listExtractions.SingleOrDefault();
             extraction.ShouldNotBeNull();
             extraction.Id.ShouldBe(24336726735);
             extraction.Name.ShouldBe("The.Clone.Wars.TV.Season.7.zip");

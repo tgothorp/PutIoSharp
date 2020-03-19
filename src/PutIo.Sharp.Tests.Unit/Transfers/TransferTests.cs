@@ -14,12 +14,12 @@ namespace PutIo.Sharp.Tests.Unit.Transfers
         {
             OverrideApiResponse(HttpStatusCode.OK, System.IO.File.ReadAllText($"{Path.GetDirectoryName(System.Reflection.Assembly.GetAssembly(typeof(TransferTests)).Location)}/Transfers/Data/get_list_transfers.json"));
 
-            var listTransfers = await PutioApiClient.Transfers.ListTransfers();
-            listTransfers.ShouldNotBeNull();
-            listTransfers.Transfers.ShouldNotBeNull();
-            listTransfers.Transfers.Count().ShouldBe(1);
+            var transfers = await PutioApiClient.Transfers.ListTransfers();
+            transfers.ShouldNotBeNull();
+            transfers.ShouldNotBeNull();
+            transfers.Count().ShouldBe(1);
 
-            var transfer = listTransfers.Transfers.FirstOrDefault();
+            var transfer = transfers.FirstOrDefault();
             transfer.ShouldNotBeNull();
             transfer.Availability.ShouldBe(100);
             transfer.CallbackUrl.ShouldBeNull();
