@@ -14,7 +14,7 @@ namespace PutIo.Sharp.Tests.Integration.Tests
         {
             var token = "YOUR_TOKEN_HERE";
             var config = new PutioConfiguration(token);
-            var client = new PutioApiClient(config);
+            var client = new PutIoApiClient(config);
 
             // Get account info for the user
             var accountInfo = await client.Account.GetAccountInfo();

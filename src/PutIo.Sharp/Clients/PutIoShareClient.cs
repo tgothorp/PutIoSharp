@@ -8,9 +8,9 @@ namespace PutIo.Sharp.Clients
 {
     public class PutIoShareClient
     {
-        private readonly PutioApiClient _apiClient;
+        private readonly PutIoApiClient _apiClient;
 
-        public PutIoShareClient(PutioApiClient apiClient)
+        public PutIoShareClient(PutIoApiClient apiClient)
         {
             _apiClient = apiClient;
         }

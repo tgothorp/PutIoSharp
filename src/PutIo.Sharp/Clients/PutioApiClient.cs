@@ -9,7 +9,7 @@ using PutIo.Sharp.Models.Files.Requests;
 
 namespace PutIo.Sharp.Clients
 {
-    public class PutioApiClient
+    public class PutIoApiClient
     {
         private readonly HttpClient _apiClient;
         private readonly HttpClient _uploadClient;
@@ -21,8 +21,9 @@ namespace PutIo.Sharp.Clients
         public readonly PutIoFriendClient Friends;
         public readonly PutIoShareClient Shares;
         public readonly PutIoRssClient Rss;
+        public readonly PutIoEventClient Events;
 
-        public PutioApiClient(PutioConfiguration putioConfiguration)
+        public PutIoApiClient(PutioConfiguration putioConfiguration)
         {
             _apiClient = putioConfiguration.ApiHttpClient ?? new HttpClient();
             _apiClient.BaseAddress = new Uri(putioConfiguration.BaseUrl);
@@ -39,6 +40,7 @@ namespace PutIo.Sharp.Clients
             Friends = new PutIoFriendClient(this);
             Shares = new PutIoShareClient(this);
             Rss = new PutIoRssClient(this);
+            Events = new PutIoEventClient(this);
         }
 
         internal async Task ExecutePostAsync(string url, PutIoPostRequest requestObject = null)

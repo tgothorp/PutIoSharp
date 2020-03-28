@@ -27,11 +27,11 @@ public class Program
 		var configuration = new PutIoConfiguration("YOUR_TOKEN_HERE");
         
 		// Create the api client passing in the configuration
-        	var apiClient = new PutioApiClient(configuration);
+        	var apiClient = new PutIoApiClient(configuration);
 
 		// list account details and setting for the user associated with the api token
-        	var accountDetails = apiClient.Account.GetAccountInfo();
-		var accountSettings = apiClient.Account.GetAccountSettings();
+        	var accountDetails = await apiClient.Account.GetAccountInfo();
+		var accountSettings = await apiClient.Account.GetAccountSettings();
 	}
 }
 ```

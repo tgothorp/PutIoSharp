@@ -12,7 +12,7 @@ namespace PutIo.Sharp.Tests.Unit
 {
     public class BaseTest : IDisposable
     {
-        protected readonly PutioApiClient PutioApiClient;
+        protected readonly PutIoApiClient PutioApiClient;
         protected readonly PutioConfiguration PutioConfiguration;
         
         private readonly Mock<HttpMessageHandler> _handlerMock;
@@ -28,7 +28,7 @@ namespace PutIo.Sharp.Tests.Unit
                  UploadHttpClient = new HttpClient(_handlerMock.Object)
             };
             
-            PutioApiClient = new PutioApiClient(PutioConfiguration);
+            PutioApiClient = new PutIoApiClient(PutioConfiguration);
         }
 
         protected void OverrideApiResponse(HttpStatusCode statusCode, string responseBody)

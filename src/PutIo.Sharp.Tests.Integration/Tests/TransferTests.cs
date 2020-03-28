@@ -15,7 +15,7 @@ namespace PutIo.Sharp.Tests.Integration.Tests
         {
             var token = "YOUR_TOKEN_HERE";
             var config = new PutioConfiguration(token);
-            var client = new PutioApiClient(config);
+            var client = new PutIoApiClient(config);
 
             await client.Transfers.CancelTransfers(new CancelTransfersRequest(59289953));
 
