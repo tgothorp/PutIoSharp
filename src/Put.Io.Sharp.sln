@@ -1,10 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PutIo.Sharp", "PutIo.Sharp\PutIo.Sharp.csproj", "{A2060DA5-39A6-4B50-948A-B0BB793E5D25}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PutIo.Sharp", "PutIo.Sharp\PutIo.Sharp.csproj", "{A2060DA5-39A6-4B50-948A-B0BB793E5D25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PutIo.Sharp.Tests.Unit", "PutIo.Sharp.Tests.Unit\PutIo.Sharp.Tests.Unit.csproj", "{28F46710-C646-49A7-AF48-3D1889154B4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PutIo.Sharp.Tests.Unit", "PutIo.Sharp.Tests.Unit\PutIo.Sharp.Tests.Unit.csproj", "{28F46710-C646-49A7-AF48-3D1889154B4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PutIo.Sharp.Tests.Integration", "PutIo.Sharp.Tests.Integration\PutIo.Sharp.Tests.Integration.csproj", "{F144B32F-EDBB-4FC8-8DC8-AB1D48E3B084}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PutIo.Sharp.Tests.Integration", "PutIo.Sharp.Tests.Integration\PutIo.Sharp.Tests.Integration.csproj", "{F144B32F-EDBB-4FC8-8DC8-AB1D48E3B084}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +27,11 @@ Global
 		{F144B32F-EDBB-4FC8-8DC8-AB1D48E3B084}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F144B32F-EDBB-4FC8-8DC8-AB1D48E3B084}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F144B32F-EDBB-4FC8-8DC8-AB1D48E3B084}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2765A18-793A-4F2E-8DC5-5CDFD32D50DC}
 	EndGlobalSection
 EndGlobal

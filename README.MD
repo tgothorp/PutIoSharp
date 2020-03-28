@@ -5,9 +5,9 @@
 ___
 # PutIO Sharp <img src="https://img.shields.io/nuget/dt/PutIoSharp"/>
 
-PutIO Sharp is a C# library for the popular cloud storage service [put.io](https://put.io). This library aims for 100% integration with the public [put.io api](https://app.swaggerhub.com/apis-docs/putio/putio/2.7.0)
+PutIO Sharp is a C# library for the popular cloud storage service [put.io](https://put.io). This library aims for 100% integration with the public [put.io api.](https://app.swaggerhub.com/apis-docs/putio/putio/2.7.0)
 
-**Note: The config endpoints are not current implemented**
+**Note: The config endpoints are not current implemented.**
 
 ## Installation
 
@@ -17,32 +17,61 @@ Visit the [Nuget Page](https://www.nuget.org/packages/PutIoSharp/) or run the pa
 
 	Install-Package PutIoSharp
 
-or run the dotnet command from the dotnet cli
+or run the dotnet command from the dotnet cli:
 
 	dotnet add package PutIoSharp
 
 ### Build from Source
 
-If you would prefer to build from source (I recommend using the NuGet package) then simply clone the repo and build with Visual Studio / JetBrains Rider
+If you would prefer to build from source (I recommend using the NuGet package) then simply clone the repo and build with Visual Studio / JetBrains Rider.
 
 ## Usage
 
-Once you have either installed the NuGet package or manually added a reference to the PutIOSharp DLL you can create a new 'PutIoApiClient` by passing in a new 'PutIoConfiguration'. See the [API Documentation](https://app.swaggerhub.com/apis-docs/putio/putio/2.7.0) for full details.
+### Authentication
+
+You will need to authenticate users so you can request a OAuth token to make subsequent calls.
+
+**Prerequisites**
+ - You will need a put.io account, you can [create one here](https://put.io/plans/).
+ - You will need to create a new OAuth app from your [app settings](https://app.put.io/settings/account/oauth/apps) (Make a note of your app id).
+
+Once you have you application setup with put.io you can start the authentication procedure.
+```csharp
+public class Program
+{
+	static async Task Main(string[] args)
+	{
+		using (var putIoAuthClient = new PutIoAuthClient())
+		{
+			// Generate a code for the user to enter at http://put.io/link
+			var code = await putIoAuthClient.GetCode(new GetCodeRequest("YOUR_APP_ID"));
+
+			// One the user has entered the code you can exchange it for a OAuth Token
+			var token = await putIoAuthClient.GetToken(code);
+		}
+	}
+}
+```
+
+
+### Making Requests
+
+Once you have a valid api token for a user, you can proceed to make calls against their account
 
 ```csharp
 public class Program
 {
-	public static void Main()
+	static async Task Main(string[] args)
 	{
-		// Create configuration passing in your api token
-		var configuration = new PutIoConfiguration("YOUR_TOKEN_HERE");
-        
-		// Create the api client passing in the configuration
-        	var apiClient = new PutIoApiClient(configuration);
+		var configuration = new PutioConfiguration("YOUR_TOKEN_HERE");
 
-		// list account details and setting for the user associated with the api token
-        	var accountDetails = await apiClient.Account.GetAccountInfo();
-		var accountSettings = await apiClient.Account.GetAccountSettings();
+		// Create the api client passing in the configuration
+		using (var apiClient = new PutIoApiClient(configuration))
+		{
+			// list account details and setting for the user associated with the api token
+			var accountDetails = await apiClient.Account.GetAccountInfo();
+			var accountSettings = await apiClient.Account.GetAccountSettings();
+		}
 	}
 }
 ```
