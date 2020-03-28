@@ -1,18 +1,29 @@
-# PutIO Sharp
+<p align="center">
+	<img src="docs/img/logo_black.png" alt="Put.io Logo" title="The Put.io logo" width="410" height="100" />
+</p>
 
-![PutIO](docs/img/logo_black.png)
+___
+# PutIO Sharp <img src="https://img.shields.io/nuget/dt/PutIoSharp"/>
 
 PutIO Sharp is a C# library for the popular cloud storage service [put.io](https://put.io). This library aims for 100% integration with the public [put.io api](https://app.swaggerhub.com/apis-docs/putio/putio/2.7.0)
+
+**Note: The config endpoints are not current implemented**
 
 ## Installation
 
 ### Nuget
 
-*NuGet package coming soon*
+Visit the [Nuget Page](https://www.nuget.org/packages/PutIoSharp/) or run the package manager command:
+
+	Install-Package PutIoSharp
+
+or run the dotnet command from the dotnet cli
+
+	dotnet add package PutIoSharp
 
 ### Build from Source
 
-If you would prefer to build from source (I recommend using the NuGet package) then simple clone the repo and build with Visual Studio / JetBrains Rider
+If you would prefer to build from source (I recommend using the NuGet package) then simply clone the repo and build with Visual Studio / JetBrains Rider
 
 ## Usage
 
