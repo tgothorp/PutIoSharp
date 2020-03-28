@@ -14,7 +14,7 @@
 		<Description>A C# library for the cloud sharing site www.put.io</Description>
 		<RepositoryUrl>https://github.com/tgothorp/PutIoSharp</RepositoryUrl>
 		<PackageId>PutIoSharp</PackageId>
-		<VersionPrefix>1.0.0</VersionPrefix>
+		<VersionPrefix>1.0.1</VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<Authors>tgothorp</Authors>
 	</PropertyGroup>
