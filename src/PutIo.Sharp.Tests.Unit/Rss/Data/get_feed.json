@@ -1,0 +1,15 @@
+{
+  "feed": {
+    "id": 45345,
+    "title": "Test RSS feed",
+    "rss_source_url": "http://example.com/feed.rss",
+    "parent_dir_id": 0,
+    "delete_old_files": false,
+    "keyword": null,
+    "paused": false,
+    "paused_at": null,
+    "created_at": "2018-10-05T13:58:46",
+    "updated_at": "2018-10-05T13:58:46",
+    "started_at": "2018-10-05T13:58:46"
+  }
+}

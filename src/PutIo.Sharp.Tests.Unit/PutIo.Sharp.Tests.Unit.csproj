@@ -22,6 +22,8 @@
 
     <ItemGroup>
       <None Remove="Error\Data\data_error.json" />
+      <None Remove="Rss\Data\get_feed.json" />
+      <None Remove="Rss\Data\get_list_feeds.json" />
       <Content Include="Error\Data\data_error.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
@@ -62,6 +64,12 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <None Remove="Transfers\Data\get_list_transfers.json" />
+      <Content Include="Rss\Data\get_feed.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Rss\Data\get_list_feeds.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
       <Content Include="Transfers\Data\get_list_transfers.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
