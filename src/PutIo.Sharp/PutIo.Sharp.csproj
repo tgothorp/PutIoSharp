@@ -10,8 +10,12 @@
     </ItemGroup>
 
 	<PropertyGroup>
+		<Title>PutIo Sharp</Title>
+		<Description>A C# library for the cloud sharing site www.put.io</Description>
+		<PackageId>PutIoSharp</PackageId>
 		<VersionPrefix>1.0.0</VersionPrefix>
 		<VersionSuffix>alpha</VersionSuffix>
+		<Authors>tgothorp</Authors>
 	</PropertyGroup>
 
 </Project>

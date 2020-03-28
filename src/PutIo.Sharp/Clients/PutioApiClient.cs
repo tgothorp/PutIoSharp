@@ -22,6 +22,7 @@ namespace PutIo.Sharp.Clients
         public readonly PutIoShareClient Shares;
         public readonly PutIoRssClient Rss;
         public readonly PutIoEventClient Events;
+        public readonly PutIoAuthClient Auth;
 
         public PutIoApiClient(PutioConfiguration putioConfiguration)
         {
@@ -41,6 +42,7 @@ namespace PutIo.Sharp.Clients
             Shares = new PutIoShareClient(this);
             Rss = new PutIoRssClient(this);
             Events = new PutIoEventClient(this);
+            Auth = new PutIoAuthClient(this);
         }
 
         internal async Task ExecutePostAsync(string url, PutIoPostRequest requestObject = null)
