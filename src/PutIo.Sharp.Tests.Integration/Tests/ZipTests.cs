@@ -13,7 +13,7 @@ namespace PutIo.Sharp.Tests.Integration.Tests
 {
     public class ZipTests
     {
-        [Fact]
+        [Fact(Skip = "Test should be run locally")]
         public async Task CreateZip()
         {
             var token = "YOUR_TOKEN_HERE";

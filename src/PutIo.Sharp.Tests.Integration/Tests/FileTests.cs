@@ -15,7 +15,7 @@ namespace PutIo.Sharp.Tests.Integration.Tests
 {
     public class FileTests
     {
-        [Fact]
+        [Fact(Skip = "Test should be run locally")]
         public async Task FolderAndFileUpload()
         {
             var token = "YOUR_TOKEN_HERE";
@@ -62,7 +62,7 @@ namespace PutIo.Sharp.Tests.Integration.Tests
             await client.Files.DeleteFiles(new DeleteFilesRequest(folderId));
         }
 
-        [Fact]
+        [Fact(Skip = "Test should be run locally")]
         public async Task ListEveryFileAndFolder()
         {
             var token = "YOUR_TOKEN_HERE";
